@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327162703) do
+ActiveRecord::Schema.define(version: 20170327163938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20170327162703) do
     t.string   "country"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -35,6 +37,16 @@ ActiveRecord::Schema.define(version: 20170327162703) do
     t.datetime "updated_at",      null: false
     t.index ["parking_spot_id"], name: "index_bookings_on_parking_spot_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_comments_on_booking_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "parking_spots", force: :cascade do |t|
@@ -62,6 +74,8 @@ ActiveRecord::Schema.define(version: 20170327162703) do
 
   add_foreign_key "bookings", "parking_spots"
   add_foreign_key "bookings", "users"
+  add_foreign_key "comments", "bookings"
+  add_foreign_key "comments", "users"
   add_foreign_key "parking_spots", "addresses"
   add_foreign_key "parking_spots", "users"
 end
