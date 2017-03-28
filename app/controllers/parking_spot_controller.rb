@@ -21,4 +21,11 @@ class ParkingSpotController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def parking_spot_params
+    params.require(:parking_spot).permit(:size, :price_per_day, :photo, :photo_cache)
+  end
+
 end
