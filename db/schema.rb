@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328081519) do
+ActiveRecord::Schema.define(version: 20170328084836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 20170328081519) do
     t.boolean  "is_parklord"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "address_id"
+    t.index ["address_id"], name: "index_users_on_address_id", using: :btree
   end
 
   add_foreign_key "bookings", "parking_spots"
@@ -110,4 +112,5 @@ ActiveRecord::Schema.define(version: 20170328081519) do
   add_foreign_key "parking_spots", "addresses"
   add_foreign_key "parking_spots", "users"
   add_foreign_key "reviews", "bookings"
+  add_foreign_key "users", "addresses"
 end
