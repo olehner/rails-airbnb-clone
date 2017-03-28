@@ -5,9 +5,10 @@
 <div class="text-center padded">
     <% @parking_spots.each do |parking_spot|%>
       <ol>
-          <h4><%= parking_spot.id %> </h4>
-          <h4><%= parking_spot.size %> </h4>
-          <h4><%= parking_spot.address %></h4>
+        <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
+        <h4><%= parking_spot.id %> </h4>
+        <h4><%= parking_spot.size %> </h4>
+        <h4><%= parking_spot.address %></h4>
       </ol>
       </div>
     </div>

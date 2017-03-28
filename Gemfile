@@ -9,6 +9,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'devise'
 
+gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
