@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
   devise_for :accounts
-  root to: 'pages#home'
+  root to: 'parking_spots#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :parking_spots, only: [:index, :show]
 
-  namespace :dashboard do
-    resources :users, only: [:show, :edit, :update, :destroy ], path: :profile
-    resources :bookings, except: [ :destroy ] do
-      resources :comments, only: [ :create ]
-      resources :reviews, only: [ :create ]
-    end
-    resources :reviews, only: [ :index ]
+# namespace :dashboard do
+  resources :users, only: [:show, :edit, :update, :destroy ] do
     resources :parking_spots
   end
+  resources :bookings, except: [ :destroy ] do
+    resources :comments, only: [ :create ]
+    resources :reviews, only: [ :create ]
+  end
+  resources :reviews, only: [ :index ]
+
+# end
 end
 
 
