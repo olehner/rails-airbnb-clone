@@ -1,4 +1,21 @@
 <h1>ParkingSpot#show</h1>
 <p>Find me in app/views/parking_spot/show.html.erb</p>
 
-<%= cl_image_tag @parking_spot.photo, height: 300, width: 400, crop: :fill %>
+<% @parking_spots.each do |parking_spot|%>
+	<ol>
+		<%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
+		<h4><%= parking_spot.id %> </h4>
+		<h4><%= parking_spot.size %> </h4>
+		<h4><%= parking_spot.address %></h4>
+		<h4><%= parking_spot.price_per_day %></h4>
+	</ol>
+<% end %>
+
+<% @users.each do |user| %>
+	<%= user.first_name user.last_name %>
+	<%= user.bio %>
+<% end %>
+
+<!-- would be nice to have description but need as attribute in schema   -->
+<!-- we don't have name - do we need one? -->
+<!-- add rating here -->
