@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
 
   def show
     #### to be aligned 1:1 with the parking_spot#show VIEW - code below just best guess
-    @parking_spot = @booking.ParkingSpot
+    @parking_spot = @booking.parking_spot
   end
 
   def create
@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    redirect_to dashboard_bookings_path(@booking)
   end
 
   private
