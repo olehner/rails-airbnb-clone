@@ -11,6 +11,5 @@ class User < ApplicationRecord
   validates :date_of_birth, presence: true, on: :update
   validates :phone_number, presence: true, on: :update
   validates :is_parklord, presence: true, default: false
-
 end
 
