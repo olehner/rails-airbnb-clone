@@ -5,11 +5,9 @@
 <div class="text-center padded">
     <% @parking_spots.each do |parking_spot|%>
       <ol>
-        <%= link_to cocktail_path(cocktail) do %>
           <h4><%= parking_spot.id %> </h4>
           <h4><%= parking_spot.size %> </h4>
           <h4><%= parking_spot.address %></h4>
-        <% end %>
       </ol>
       </div>
     </div>
