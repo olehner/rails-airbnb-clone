@@ -1,5 +1,5 @@
 class ParkingSpot < ApplicationRecord
-  belongs_to :address
+  belongs_to :address, dependent: :destroy
   belongs_to :user
   has_many :reviews, as: :reviewable
   has_many :bookings
