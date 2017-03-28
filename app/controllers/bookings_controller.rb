@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
     @booking.user = @user
 
     if booking.save
-      redirect_to dashboard_bookings_path(@booking)
+      redirect_to booking_path(@booking)
     else
       render :new
     end
@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
-    redirect_to dashboard_bookings_path(@booking)
+    redirect_to booking_path(@booking)
   end
 
   private
