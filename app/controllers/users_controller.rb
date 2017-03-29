@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_post, only: [:update, :destroy]
+  before_action :find_user
 
   def show
   end
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to #?
+      redirect_to user_path(@user)
     else
       render :edit
     end
@@ -28,6 +28,6 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 end
