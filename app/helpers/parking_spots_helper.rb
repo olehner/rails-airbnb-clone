@@ -1,2 +1,2 @@
-module ParkingsSpotHelper
+module ParkingSpotsHelper
 end
