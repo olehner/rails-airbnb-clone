@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  #als niet wel log-in maar geen User --> User.new
+
+  attr_reader :current_user
+  helper_method :current_user
+
+  def current_user
+    @current_user ||= current_account.try(:user)
+  end
 end

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   belongs_to :account, dependent: :destroy
-  belongs_to :address, dependent: :destroy
+  belongs_to :address, dependent: :destroy, optional: true
   has_many :comments
   has_many :bookings
   has_many :parking_spots, dependent: :destroy
