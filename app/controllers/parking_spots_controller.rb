@@ -3,6 +3,7 @@ class ParkingSpotsController < ApplicationController
 
     def new
     @parking_spot = ParkingSpot.new
+    @parking_spot.build_address
     # redirect_to #?
   end
 

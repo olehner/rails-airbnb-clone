@@ -1,20 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-    <%= simple_form_for @parking_spot do |f| %>
-      <%= f.error_notification %>
-      <%= f.input :size %>
-      <%= f.input :price_per_day %>
-      <%= f.input :full_address %>
-<!-- address input -->
-      <%= f.input :photo %>
-      <%= f.input :photo_cache, as: :hidden %>
-      <%= f.submit %>
-      <% end %>
+
+<div class="text-left padded">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <%= simple_form_for @parking_spot do |f| %>
+        <%= f.error_notification %>
+        <%= f.label "Size" %>
+        <%= f.input_field :size, :collection => ['Small','Medium','Large'] %> <br>
+        <%= f.label "Price per day €" %>
+        <%= f.input_field :price_per_day %> <br>
+        <%= f.simple_fields_for :address do |ff| %>
+          <%= ff.label "Street number" %>
+          <%= ff.input_field :street_number %> <br>
+          <%= ff.label "Street name" %>
+          <%= ff.input_field :street_name %> <br>
+          <%= ff.label "Zip code" %>
+          <%= ff.input_field :zip_code %> <br>
+          <%= ff.label "City" %>
+          <%= ff.input_field :city %> <br>
+          <%= ff.label "Country "  %>
+          <%= ff.country_select :country %>
+        <% end %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.submit %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-
 
 
