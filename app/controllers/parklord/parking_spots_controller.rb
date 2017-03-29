@@ -1,13 +1,15 @@
-class ParkingSpotsController < ApplicationController
+class Parklord::ParkingSpotsController < ApplicationController
   before_action :set_parking_spot, only: [:show, :edit, :update, :destroy]
 
     def new
     @parking_spot = ParkingSpot.new
+    @parking_spot.build_address
     # redirect_to #?
   end
 
   def create
     @parking_spot = ParkingSpot.new(parking_spot_params)
+
     @parking_spot.save
     redirect_to #?
   end
