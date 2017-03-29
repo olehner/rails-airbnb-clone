@@ -1,4 +1,5 @@
-e<h1>ParkingSpot#index</h1>
+<h1> Sir Parks a Lot</h1>
+<!-- ParkingSpot#index -->
 <!-- <p>Find me in app/views/parking_spot/index.html.erb</p>
  -->
 
@@ -6,10 +7,9 @@ e<h1>ParkingSpot#index</h1>
     <% @parking_spots.each do |parking_spot|%>
       <ol>
         <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
-        <h4><%= parking_spot.id %> </h4>
-        <h4><%= parking_spot.size %> </h4>
+        <h4>Size - <%= parking_spot.size %> </h4>
         <h4><%= parking_spot.address.full_address %></h4>
-        <h4> $ <%= parking_spot.price_per_day %></h4>
+        <h4> ‎€ <%= parking_spot.price_per_day %></h4>
 
 <!-- would be nice to have description but need as attribute in schema   -->
 <!-- add rating here -->
