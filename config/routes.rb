@@ -8,9 +8,13 @@ Rails.application.routes.draw do
   
   # for logged in users
 
-    resources :users, only: [:show, :edit, :update, :destroy ] do
+
+#recommended alternative for logged in users/parklord
+  resources :users, only: [:show, :edit, :update, :destroy ]
+  namespace :parklord do 
     resources :parking_spots
   end
+
   resources :bookings, except: [ :new, :destroy ] do
     resources :comments, only: [ :create ]
     resources :reviews, only: [ :create ]
@@ -22,11 +26,6 @@ end
 
 
 ####
-#recommended alternative for logged in users/parklord
-  # resources :users, only: [:show, :edit, :update, :destroy ]
-  # namespace :parklord do 
-  #   resources :parking_spots
-  # end
 
 # root/index would show all parking spots or a selection
 # /parking_spots would show all parking spots or search results
