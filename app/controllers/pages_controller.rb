@@ -3,9 +3,9 @@ class PagesController < ApplicationController
 end
 
 
-class dashboard
+# class dashboard
 
-  def show
-      @bookings = for user
+#   def show
+#       @bookings = for user
 
-  end
+#   end
