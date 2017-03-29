@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   belongs_to :account, dependent: :destroy
-  belongs_to :address, dependent: :destroy
+  belongs_to :address, dependent: :destroy, optional: true
   has_many :comments
   has_many :bookings
   has_many :parking_spots, dependent: :destroy
@@ -11,6 +11,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true, on: :update
   validates :date_of_birth, presence: true, on: :update
   validates :phone_number, presence: true, on: :update
-  validates :is_parklord, presence: true
+  validates :is_parklord, inclusion: { in: [true, false] }, on: :update
 end
 

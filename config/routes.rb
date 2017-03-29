@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :accounts
+  devise_for :accounts, :controllers => { registrations: "registrations"}
   root to: 'parking_spots#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # for everyone
   resources :parking_spots, only: [:index, :show]
-  
+
   # for logged in users
 
 
 #recommended alternative for logged in users/parklord
   resources :users, only: [:show, :edit, :update, :destroy ]
-  namespace :parklord do 
+  namespace :parklord do
     resources :parking_spots
   end
 
