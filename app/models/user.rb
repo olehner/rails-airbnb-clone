@@ -11,6 +11,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true, on: :update
   validates :date_of_birth, presence: true, on: :update
   validates :phone_number, presence: true, on: :update
-  validates :is_parklord, inclusion: { in: [true, false] }, on: :update
+  validates :is_parklord, inclusion: { in: [true, false] }
 end
 

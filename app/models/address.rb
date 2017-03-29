@@ -1,9 +1,19 @@
 class Address < ApplicationRecord
-  belongs_to :parking_spot
-  belongs_to :user
   validates :street_name, presence: true
   validates :street_number, presence: true
   validates :zip_code, presence: true
   validates :city, presence: true
   validates :country, presence: true
+
+  geocoded_by :full_address
+  after_validation :geocode, if: :full_address_changed?
+
+  def full_address
+    "#{street_number} #{street_name}, #{zip_code}, #{city} #{country}"
+  end
+
+  def full_address_changed?
+    street_name_changed? || zip_code_changed? || city_changed? || country_changed?
+  end
+
 end
