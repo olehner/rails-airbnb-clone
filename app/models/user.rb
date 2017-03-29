@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   belongs_to :account, dependent: :destroy
   belongs_to :address, dependent: :destroy
   has_many :comments

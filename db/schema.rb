@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328153244) do
+ActiveRecord::Schema.define(version: 20170329103648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(version: 20170328153244) do
   create_table "bookings", force: :cascade do |t|
     t.date     "start_date"
     t.date     "end_date"
-    t.string   "status"
+    t.string   "status",          default: "pending"
     t.integer  "user_id"
     t.integer  "parking_spot_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.index ["parking_spot_id"], name: "index_bookings_on_parking_spot_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
@@ -97,10 +97,11 @@ ActiveRecord::Schema.define(version: 20170328153244) do
     t.date     "date_of_birth"
     t.text     "bio"
     t.string   "phone_number"
-    t.boolean  "is_parklord"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.boolean  "is_parklord",   default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "account_id"
+    t.string   "photo"
     t.index ["account_id"], name: "index_users_on_account_id", using: :btree
   end
 
