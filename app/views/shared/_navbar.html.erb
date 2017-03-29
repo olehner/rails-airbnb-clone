@@ -12,17 +12,12 @@
     <!-- Different navigation if login or not -->
     <% if account_signed_in? %>
 
-
-    <!-- Profile picture and dropdown -->
-
-
-    <%= link_to user_path(@user) do %>
-      <%= cl_image_tag @current_account.user.photo, class: "avatar-large" %>
+    <%= link_to user_path(current_account.user) do %>
+      <%= cl_image_tag current_account.user.photo, class: "avatar-large" %>
     <% end %>
 
 
     <%= link_to t(".sign_out", default: "LogOut"), destroy_account_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-button btn" %>
-
 
     <% else %>
 
