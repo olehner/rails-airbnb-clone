@@ -1,18 +1,4 @@
 Rails.application.routes.draw do
-  get 'parking_spot/index'
-
-  get 'parking_spot/show'
-
-  get 'parking_spot/new'
-
-  get 'parking_spot/create'
-
-  get 'parking_spot/edit'
-
-  get 'parking_spot/update'
-
-  get 'parking_spot/destroy'
-
   devise_for :accounts
   root to: 'parking_spots#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
