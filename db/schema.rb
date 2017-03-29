@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20170329103648) do
+ActiveRecord::Schema.define(version: 20170329114041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,8 +40,8 @@ ActiveRecord::Schema.define(version: 20170329103648) do
     t.string   "country"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -103,10 +102,11 @@ ActiveRecord::Schema.define(version: 20170329103648) do
     t.datetime "updated_at",                    null: false
     t.integer  "account_id"
     t.string   "photo"
+    t.integer  "address_id"
     t.index ["account_id"], name: "index_users_on_account_id", using: :btree
+    t.index ["address_id"], name: "index_users_on_address_id", using: :btree
   end
 
-  add_foreign_key "addresses", "users"
   add_foreign_key "bookings", "parking_spots"
   add_foreign_key "bookings", "users"
   add_foreign_key "comments", "bookings"
