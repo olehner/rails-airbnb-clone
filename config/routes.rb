@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   root to: 'parking_spots#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  # for everyone
   resources :parking_spots, only: [:index, :show]
+  
+  # for logged in users
 
-# namespace :dashboard do
-  resources :users, only: [:show, :edit, :update, :destroy ] do
+    resources :users, only: [:show, :edit, :update, :destroy ] do
     resources :parking_spots
   end
-  resources :bookings, except: [ :destroy ] do
+  resources :bookings, except: [ :new, :destroy ] do
     resources :comments, only: [ :create ]
     resources :reviews, only: [ :create ]
   end
@@ -18,6 +20,13 @@ Rails.application.routes.draw do
 # end
 end
 
+
+####
+#recommended alternative for logged in users/parklord
+  # resources :users, only: [:show, :edit, :update, :destroy ]
+  # namespace :parklord do 
+  #   resources :parking_spots
+  # end
 
 # root/index would show all parking spots or a selection
 # /parking_spots would show all parking spots or search results
