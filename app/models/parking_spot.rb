@@ -8,4 +8,8 @@ class ParkingSpot < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  def self.return_address_with_coordinates
+    all.map(&:address).select{|address| address.latitude && address.longitude }
+  end
+
 end

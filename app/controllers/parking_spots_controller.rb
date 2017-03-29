@@ -3,10 +3,23 @@ class ParkingSpotsController < ApplicationController
 
   def index
     @parking_spots = ParkingSpot.all
+
+    @addresses = ParkingSpot.return_address_with_coordinates
+    @hash = Gmaps4rails.build_markers(@addresses) do |address, marker|
+      marker.lat address.latitude
+      marker.lng address.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
+
+
   end
 
   def show
-
+    @hash = Gmaps4rails.build_markers([@parking_spot.address]) do |address, marker|
+      marker.lat address.latitude
+      marker.lng address.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def new
