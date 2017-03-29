@@ -9,7 +9,7 @@
       <p><%= @user.bio %></p>
       <p><%= @user.phone_number %></p>
       <%= link_to 'Edit', edit_user_path(@user) %>
-      <%= link_to "Delete profile", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
+      <%= link_to "Delete profile", parking_spots_path, method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
   </div>
 </div>
