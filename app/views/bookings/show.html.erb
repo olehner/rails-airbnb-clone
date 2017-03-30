@@ -16,6 +16,9 @@
       <p>do you want to cancel the booking?</p>
       <%= link_to "Cancel", cancel_booking_path(@booking) %>
     <% end %>
+
+</div>
+
     <h2><%= pluralize(@booking.comments.count, "Comment") %></h2>
     <ul class="list">
       <% @comments.each do |comment| %>
@@ -27,6 +30,7 @@
     </ul>
     <%= render '/comments/form' %>
 
+<div class="text-center padded">
   <% elsif current_account.user == @booking.parking_spot.user %>
 
     <% if @booking.status == "cancelled" %>
@@ -39,7 +43,7 @@
       <p>do you want to confirm the booking?</p>
       <%= link_to "Confirm", confirm_booking_path(@booking) %>
     <% end %>
-
+</div>
     <h2><%= pluralize(@booking.comments.count, "Comment") %></h2>
     <ul class="list">
       <% @comments.each do |comment| %>
@@ -51,6 +55,7 @@
     </ul>
     <%= render '/comments/form' %>
 
+<div class="text-center padded">
 
   <% else %>
     <%= link_to root_path do %>
