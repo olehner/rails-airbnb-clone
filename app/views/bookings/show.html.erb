@@ -7,9 +7,9 @@
   <% if current_account.user == @booking.user %>
     <p>you booked this one - chat with the owner</p>
     <p>Booking start date</p>
-    <p><%= booking.start_date %></p>
+    <p><%= @booking.start_date %></p>
     <p>Booking end date</p>
-    <p><%= booking.end_date %></p>
+    <p><%= @booking.end_date %></p>
     <p>the current status is:</p>
     <p><%= @booking.status %></p><br>
     <% if @booking.status == "cancelled" %>
