@@ -2,7 +2,47 @@
 <p>Find me in app/views/bookings/show.html.erb</p>
 
 
-<p>todo - copy (or add _xxx) mostly 1:1 from parking_spot#show, including updated "booking box"</p>
+<div class="text-center padded">
+
+  <% if current_account.user == @booking.user %>
+    <p>you booked this one - chat with the owner</p>
+    <p>Booking start date</p>
+    <p><%= booking.start_date %></p>
+    <p>Booking end date</p>
+    <p><%= booking.end_date %></p>
+    <p>the current status is:</p>
+    <p><%= @booking.status %></p><br>
+    <% if @booking.status == "cancelled" %>
+      <%= link_to "Sorry you cancelled - maybe you want to book something else", root_path %>
+      <% else %>
+      <p>do you want to cancel the booking?</p>
+      <%= link_to "Cancel", cancel_booking_path(@booking) %>
+    <% end %>
+
+
+  <% elsif current_account.user == @booking.parking_spot.user %>
+
+    <% if @booking.status == "cancelled" %>
+      <p>Unfortuanetly the booking got cancelled ...</p>
+    <% elsif @booking.status == "confirmed" %>
+
+        
+    <% else %>
+      <p>this is your parking spot - do you want to cancel or the booking?</p>
+      <%= link_to "Cancel", cancel_booking_path(@booking) %>
+      <p>do you want to confirm the booking?</p>
+      <%= link_to "Confirm", confirm_booking_path(@booking) %>
+    <% end %>
+
+  <% else %>
+    <%= link_to root_path do %>
+      <%= image_tag "keep_out.jpg" %>
+    <% end %>
+    <p>you sneaky bastard, go away!</p>
+  <% end %>
+
+</div>
+
 <h2><%= pluralize(@booking.comments.count, "Comment") %></h2>
 <ul class="list">
   <% @comments.each do |comment| %>
@@ -13,3 +53,4 @@
   <% end %>
 </ul>
 <%= render '/comments/form' %>
+

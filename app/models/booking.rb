@@ -6,4 +6,13 @@ class Booking < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :status, presence: true, inclusion: { in: ["pending", "confirmed", "cancelled", "completed"], allow_nil: false }
+
+  def cancel!
+    self.status = "cancelled"
+  end
+
+  def confirm!
+    self.status = "confirmed"
+  end
+
 end
