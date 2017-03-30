@@ -15,6 +15,7 @@ before_action :authenticate_account!
   def show
     #### to be aligned 1:1 with the parking_spot#show VIEW - code below just best guess
     @parking_spot = @booking.parking_spot
+    @comments = Comment.where(booking_id: @booking)
   end
 
   def create
@@ -31,7 +32,7 @@ before_action :authenticate_account!
 
 
     @booking.user = current_account.user
-    
+
 
     if @booking.save
       redirect_to booking_path(@booking)
