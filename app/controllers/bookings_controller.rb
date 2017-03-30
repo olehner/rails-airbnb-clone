@@ -1,8 +1,8 @@
 
 class BookingsController < ApplicationController
 
-before_action :set_booking, only: [:show, :update, :cancel, :confirm]
-before_action :authenticate_account!
+  before_action :set_booking, only: [:show, :update, :cancel, :confirm]
+
 
   def index
     @bookings = Booking.all
@@ -35,7 +35,7 @@ before_action :authenticate_account!
 
   def cancel
     @booking.cancel!
-    @booking.save 
+    @booking.save
     redirect_to booking_path(@booking)
   end
 

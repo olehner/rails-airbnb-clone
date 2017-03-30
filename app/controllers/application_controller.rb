@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :store_current_location, :unless => :devise_controller?
   after_filter :store_location
+  before_action :authenticate_account!
 
 
 
@@ -15,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def store_location
   # store last url - this is needed for post-login redirect to whatever the user last visited.
-  return unless request.get? 
+  return unless request.get?
   if (request.path != "/accounts/sign_in" &&
     request.path != "/accounts/sign_up" &&
     request.path != "/accounts/password/new" &&
@@ -23,7 +24,7 @@ class ApplicationController < ActionController::Base
     request.path != "/accounts/confirmation" &&
     request.path != "/accounts/sign_out" &&
       !request.xhr?) # don't store ajax calls
-    session[:previous_url] = request.fullpath 
+    session[:previous_url] = request.fullpath
   end
   end
 
