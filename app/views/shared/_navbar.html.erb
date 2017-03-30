@@ -8,12 +8,7 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
 
-    <form action="/parking_spots/search" method="get" class="navbar-wagon-search" >
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search for city" name="search">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
+    <%= render 'shared/search' %>
 
 
     <!-- Different navigation if login or not -->
