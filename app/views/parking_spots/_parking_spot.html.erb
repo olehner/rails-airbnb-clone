@@ -5,7 +5,7 @@
   <!-- <p>Find me in app/views/parking_spot/show.html.erb</p> -->
 
   <%= cl_image_tag @parking_spot.photo, height: 300, width: 400, crop: :fill %>
-  <h4>Size - <%= @parking_spot.size %> </h4>
+  <h4> Size - <%= @parking_spot.size %> </h4>
   <h4> Address - <%= @parking_spot.address.full_address %></h4>
   <h4>Price per day - € <%= @parking_spot.price_per_day %></h4>
   <h4><%= @parking_spot.description %></h4>
