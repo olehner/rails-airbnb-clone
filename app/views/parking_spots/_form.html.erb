@@ -5,6 +5,10 @@
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%= simple_form_for @parking_spot do |f| %>
         <%= f.error_notification %>
+        <%= f.label "Title" %>
+        <%= f.input_field :title %> <br>
+        <%= f.label "Description" %>
+        <%= f.input_field :description%> <br>
         <%= f.label "Size" %>
         <%= f.input_field :size, :collection => ['Small','Medium','Large'] %> <br>
         <%= f.label "Price per day €" %>
