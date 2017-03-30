@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, except: [ :new, :destroy ] do
+    member do
+      get 'cancel'
+      get 'confirm' 
+    end
+
     resources :comments, only: [ :create ]
     resources :reviews, only: [ :create ]
   end
