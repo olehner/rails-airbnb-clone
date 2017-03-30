@@ -3,10 +3,10 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <%= simple_form_for @parking_spot do |f| %>
+      <%= simple_form_for [:parklord, @parking_spot] do |f| %>
         <%= f.error_notification %>
         <%= f.label "Size" %>
-        <%= f.input_field :size, :collection => ['Small','Medium','Large'] %> <br>
+        <%= f.input_field :size, :collection => ParkingSpot::SIZES %> <br>
         <%= f.label "Price per day €" %>
         <%= f.input_field :price_per_day %> <br>
         <%= f.simple_fields_for :address do |ff| %>
