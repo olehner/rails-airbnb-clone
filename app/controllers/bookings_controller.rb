@@ -23,15 +23,15 @@ before_action :authenticate_account!
     #### using currently logged in user when creating booking (setting it to pending) to set user to booking (parker)
 
   ####
-  #<%= simple form post path should be --> bookings_path(parking_spot_id: @parking_spot.id) %>
+  #<%= simple form post path should be -->  %>
   #to pass parking spot to booking.create
   ###
-
-    @parking_spot = ParkingSpot.find(params[:parking_spot_id])
+    @parking_spot = ParkingSpot.find(params[:booking][:parking_spot_id])
     @booking.parking_spot = @parking_spot
 
-    @user = current_account.user
-    @booking.user = @user
+
+    @booking.user = current_account.user
+    
 
     if @booking.save
       redirect_to booking_path(@booking)

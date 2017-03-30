@@ -13,6 +13,10 @@ class ParkingSpot < ApplicationRecord
 
   accepts_nested_attributes_for :address
 
+  #### necessary for booking form in parkingspot#show
+  # accepts_nested_attributes_for :bookings
+  ####
+  
   def self.return_address_with_coordinates
     all.map(&:address).select{|address| address.latitude && address.longitude }
   end
