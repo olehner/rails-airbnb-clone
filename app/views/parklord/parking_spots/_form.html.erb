@@ -5,24 +5,15 @@
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%= simple_form_for [:parklord, @parking_spot] do |f| %>
         <%= f.error_notification %>
-        <%= f.label "Title" %>
-        <%= f.input_field :title %> <br>
-        <%= f.label "Description" %>
-        <%= f.input_field :description%> <br>
-        <%= f.label "Size" %>
-        <%= f.input_field :size, :collection => ParkingSpot::SIZES %> <br>
-        <%= f.label "Price per day €" %>
-        <%= f.input_field :price_per_day %> <br>
+        <%= f.input :title, as: :text %>
+        <%= f.input :description, as: :text%>
+        <%= f.input :size, :collection => ParkingSpot::SIZES %>
+        <%= f.input :price_per_day %>
         <%= f.simple_fields_for :address do |ff| %>
-          <%= ff.label "Street number" %>
-          <%= ff.input_field :street_number %> <br>
-          <%= ff.label "Street name" %>
-          <%= ff.input_field :street_name %> <br>
-          <%= ff.label "Zip code" %>
-          <%= ff.input_field :zip_code %> <br>
-          <%= ff.label "City" %>
-          <%= ff.input_field :city %> <br>
-          <%= ff.label "Country "  %>
+          <%= ff.input :street_number %>
+          <%= ff.input :street_name %>
+          <%= ff.input :zip_code %>
+          <%= ff.input :city %>
           <%= ff.country_select :country %>
         <% end %>
         <%= f.input :photo %>

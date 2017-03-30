@@ -1,1 +1,8 @@
+<!-- Parklord show page -->
+
 <%= render 'parking_spots/parking_spot' %>
+
+
+<%= link_to "Edit parking lot listing", edit_parklord_parking_spot_path %>
+<%= link_to "Delete parking spot", parklord_parking_spot_path(@parking_spot), method: :delete, data: {confirm: 'Are you sure?' } %>
+<%= link_to "Back to all parking lots", parklord_parking_spots_path %>
