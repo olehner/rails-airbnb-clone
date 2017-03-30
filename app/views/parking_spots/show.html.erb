@@ -1,23 +1,7 @@
-<div class="text-center padded">
 
-  <h1> Parking Spot <%= @parking_spot.id  %></h1>
-  <!-- ParkingSpot#show -->
-  <!-- <p>Find me in app/views/parking_spot/show.html.erb</p> -->
+<%= render 'parking_spot' %>
 
-  <%= cl_image_tag @parking_spot.photo, height: 300, width: 400, crop: :fill %>
-  <h4>Size - <%= @parking_spot.size %> </h4>
-  <h4> Address - <%= @parking_spot.address.full_address %></h4>
-  <h4>Price per day - € <%= @parking_spot.price_per_day %></h4>
-
-
-  <div id="map" style="width: 100%; height: 600px;"></div>
-
-  <h4>Parklord details</h4>
-  <%= @parking_spot.user.first_name %> <%= @parking_spot.user.last_name %>
-  <%= @parking_spot.user.bio %>
-
-
-  <h4>book or DIE!</h4>
+<h4>book or DIE!</h4>
     <% if account_signed_in? %>
       
       <%= simple_form_for @booking do |f| %>
@@ -39,27 +23,3 @@
     <% else %>
       <%= link_to t(".sign_in", default: "Login"), new_account_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>    
     <% end %>
-
-
-
-  <% content_for(:after_js) do %>
-    <%= javascript_tag do %>
-      $(document).ready(function() {
-        var handler = Gmaps.build('Google');
-        handler.buildMap({ internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(2);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
-          }
-        });
-      });
-    <% end %>
-  <% end %>
-</div>
-<!-- would be nice to have description but need as attribute in schema   -->
-<!-- we don't have name - do we need one? -->
-<!-- add rating here -->
