@@ -22,23 +22,22 @@
 
   <% elsif current_account.user == @booking.parking_spot.user %>
 
-    <% if @booking.status == "cancelled" %>
-      <p>Unfortuanetly the booking got cancelled ...</p>
-    <% elsif @booking.status == "confirmed" %>
+      <% if @booking.status == "cancelled" %>
+        <p>Unfortuanetly the booking got cancelled ...</p>
+      <% elsif @booking.status == "confirmed" %>
 
-        
+      
+      <% else %>
+        <p>this is your parking spot - do you want to cancel or the booking?</p>
+        <%= link_to "Cancel", cancel_booking_path(@booking) %>
+        <p>do you want to confirm the booking?</p>
+        <%= link_to "Confirm", confirm_booking_path(@booking) %>
+      <% end %>
     <% else %>
-      <p>this is your parking spot - do you want to cancel or the booking?</p>
-      <%= link_to "Cancel", cancel_booking_path(@booking) %>
-      <p>do you want to confirm the booking?</p>
-      <%= link_to "Confirm", confirm_booking_path(@booking) %>
-    <% end %>
-
-  <% else %>
-    <%= link_to root_path do %>
-      <%= image_tag "keep_out.jpg" %>
-    <% end %>
-    <p>you sneaky bastard, go away!</p>
+      <%= link_to root_path do %>
+        <%= image_tag "keep_out.jpg" %>
+      <% end %>
+      <p>you sneaky bastard, go away!</p>
   <% end %>
 
 </div>
