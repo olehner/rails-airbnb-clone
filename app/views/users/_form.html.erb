@@ -7,5 +7,12 @@
   <%= f.input :phone_number %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit %>
+  <%= f.simple_fields_for :address do |ff| %>
+    <%= ff.input :street_number %>
+    <%= ff.input :street_name %>
+    <%= ff.input :zip_code %>
+    <%= ff.input :city %>
+    <%= ff.country_select :country %>
+  <% end %>
+<%= f.submit %>
 <% end %>

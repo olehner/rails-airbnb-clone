@@ -12,5 +12,6 @@ class User < ApplicationRecord
   validates :date_of_birth, presence: true, on: :update
   validates :phone_number, presence: true, on: :update
   validates :is_parklord, inclusion: { in: [true, false] }
+  accepts_nested_attributes_for :address
 end
 
