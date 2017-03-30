@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :find_user
 
+
   def edit
     build_address_for_first_time_edit
     @bookings = current_user.bookings

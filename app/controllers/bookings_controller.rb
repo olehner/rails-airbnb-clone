@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
 #######
 
 before_action :set_booking, only: [:show, :update]
-before_action :authenticate_account!
+
 
 
   def index
