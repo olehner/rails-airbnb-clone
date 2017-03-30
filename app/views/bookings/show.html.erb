@@ -1,6 +1,4 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
-
+<%= render 'parking_spots/parking_spot' %>
 
 <div class="text-center padded">
 
@@ -18,38 +16,50 @@
       <p>do you want to cancel the booking?</p>
       <%= link_to "Cancel", cancel_booking_path(@booking) %>
     <% end %>
-
+    <h2><%= pluralize(@booking.comments.count, "Comment") %></h2>
+    <ul class="list">
+      <% @comments.each do |comment| %>
+      <li class= "list-item">
+        <%= comment.user.username %>
+        <%= comment.content %>
+      </li>
+      <% end %>
+    </ul>
+    <%= render '/comments/form' %>
 
   <% elsif current_account.user == @booking.parking_spot.user %>
 
-      <% if @booking.status == "cancelled" %>
-        <p>Unfortuanetly the booking got cancelled ...</p>
-      <% elsif @booking.status == "confirmed" %>
-
-      
-      <% else %>
-        <p>this is your parking spot - do you want to cancel or the booking?</p>
-        <%= link_to "Cancel", cancel_booking_path(@booking) %>
-        <p>do you want to confirm the booking?</p>
-        <%= link_to "Confirm", confirm_booking_path(@booking) %>
-      <% end %>
+    <% if @booking.status == "cancelled" %>
+      <p>Unfortuanetly the booking got cancelled ...</p>
+    <% elsif @booking.status == "confirmed" %>
+ 
     <% else %>
-      <%= link_to root_path do %>
-        <%= image_tag "keep_out.jpg" %>
+      <p>this is your parking spot - do you want to cancel or the booking?</p>
+      <%= link_to "Cancel", cancel_booking_path(@booking) %>
+      <p>do you want to confirm the booking?</p>
+      <%= link_to "Confirm", confirm_booking_path(@booking) %>
+    <% end %>
+
+    <h2><%= pluralize(@booking.comments.count, "Comment") %></h2>
+    <ul class="list">
+      <% @comments.each do |comment| %>
+      <li class= "list-item">
+        <%= comment.user.username %>
+        <%= comment.content %>
+      </li>
       <% end %>
-      <p>you sneaky bastard, go away!</p>
+    </ul>
+    <%= render '/comments/form' %>
+
+
+  <% else %>
+    <%= link_to root_path do %>
+      <%= image_tag "keep_out.jpg" %>
+    <% end %>
+    <p>you sneaky bastard, go away!</p>
   <% end %>
 
 </div>
 
-<h2><%= pluralize(@booking.comments.count, "Comment") %></h2>
-<ul class="list">
-  <% @comments.each do |comment| %>
-  <li class= "list-item">
-  <%= comment.user.username %>
-    <%= comment.content %>
-  </li>
-  <% end %>
-</ul>
-<%= render '/comments/form' %>
+
 
