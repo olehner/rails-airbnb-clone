@@ -4,8 +4,12 @@ class UsersController < ApplicationController
 
   def edit
     build_address_for_first_time_edit
+    @bookings = current_user.bookings
   end
-
+  def show
+    @bookings = current_user.bookings
+    @parking_spots = current_user.parking_spots
+  end
   def update
     create_address_for_first_time_edit(address_params)
     if @user.update(user_params)
