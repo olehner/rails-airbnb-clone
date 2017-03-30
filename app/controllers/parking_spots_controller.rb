@@ -36,7 +36,6 @@ class ParkingSpotsController < ApplicationController
       marker.lng address.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
-   @booking = Booking.new
   end
 
   def show
