@@ -43,12 +43,12 @@ class Parklord::ParkingSpotsController < ApplicationController
 
   def update
     @parking_spot = @parking_spot.update(parking_spot_params)
-    redirect_to #?
+    redirect_to parklord_parking_spot_path
   end
 
   def destroy
     @parking_spot.destroy
-    redirect_to #?
+    redirect_to parklord_parking_spots_path
   end
 
   private
@@ -62,7 +62,7 @@ class Parklord::ParkingSpotsController < ApplicationController
   end
 
   def parking_spot_params
-    params.require(:parking_spot).permit(:size, :price_per_day,
+    params.require(:parking_spot).permit(:title, :description, :size, :price_per_day,
       :photo, :photo_cache, :address_attributes => address_attr)
   end
 
