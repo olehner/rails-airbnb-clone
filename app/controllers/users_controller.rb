@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.build_address
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
