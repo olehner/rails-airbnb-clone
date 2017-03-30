@@ -5,10 +5,9 @@
         <div class="panel-heading main-color-bg">
           <h3 class="panel-title">User Profile</h3>
         </div>
-        <h2><%= @user.username %></h2>
         <%= cl_image_tag @user.photo, :class => "avatar-big" %>
-        <p><%= @user.first_name %></p>
-        <p><%= @user.last_name %></p>
+        <h2><%= @user.username %></h2>
+        <p><%= @user.first_name %> <%= @user.last_name %></p>
         <p><%= @user.date_of_birth %></p>
         <p><%= @user.bio %></p>
         <p><%= @user.phone_number %></p>
