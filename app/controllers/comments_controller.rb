@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_account!
+
 
   def new
     @booking = Booking.find(params[:booking_id])
