@@ -50,7 +50,9 @@
       <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading main-color-bg">
-          <h3 class="panel-title">Park Spots</h3>
+          <h3 class="panel-title">Park Spots
+            <%= link_to "Add", new_parklord_parking_spot_path, :class => "btn btn-success btn-xs pull-right" %>
+          </h3>
         </div>
         <ul class="list-group">
         <% current_user.parking_spots.each do |park_spot| %>
