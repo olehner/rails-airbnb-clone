@@ -1,7 +1,7 @@
 class ParkingSpotsController < ApplicationController
   before_action :set_parking_spot, only: [:show, :edit, :update, :destroy]
 
-    def new
+  def new
     @parking_spot = ParkingSpot.new
     @parking_spot.build_address
     # redirect_to #?
@@ -22,8 +22,18 @@ class ParkingSpotsController < ApplicationController
       marker.lng address.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
+  end
 
+  def citysearch
+    @query = params.fetch(:search)
+    @parking_spots = ParkingSpot.joins(:address).where(addresses: {city: @query})
 
+    @addresses = @parking_spots.return_address_with_coordinates
+    @hash = Gmaps4rails.build_markers(@addresses) do |address, marker|
+      marker.lat address.latitude
+      marker.lng address.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def show

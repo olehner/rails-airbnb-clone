@@ -8,22 +8,28 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
 
+    <form action="/parking_spots/search" method="get" class="navbar-wagon-search" >
+      <input type="text" class="navbar-wagon-search-input" placeholder="Search for city" name="search">
+      <button type="submit" class="navbar-wagon-search-btn">
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
 
 
     <!-- Different navigation if login or not -->
     <% if account_signed_in? %>
 
-    <%= link_to user_path(current_account.user) do %>
-      <%= cl_image_tag current_account.user.photo, class: "avatar-large" %>
-    <% end %>
+      <%= link_to user_path(current_account.user) do %>
+        <%= cl_image_tag current_account.user.photo, class: "avatar-large" %>
+      <% end %>
 
 
-    <%= link_to t(".sign_out", default: "LogOut"), destroy_account_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-button btn" %>
+      <%= link_to t(".sign_out", default: "LogOut"), destroy_account_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-button btn" %>
 
     <% else %>
 
     <!-- Login text link -->
-    <%= link_to t(".sign_in", default: "Login"), new_account_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+      <%= link_to t(".sign_in", default: "Login"), new_account_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
 
     <% end %>
 
