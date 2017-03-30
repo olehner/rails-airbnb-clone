@@ -3,13 +3,11 @@
 <div class="text-center padded">
     <% @parking_spots.each do |parking_spot|%>
       <ol>
+        <h1><%= parking_spot.title %></h1>
         <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
         <h4>Size - <%= parking_spot.size %> </h4>
         <h4><%= parking_spot.address.full_address %></h4>
         <h4> ‎€ <%= parking_spot.price_per_day %></h4>
-
-<!-- would be nice to have description but need as attribute in schema   -->
-<!-- add rating here -->
       </ol>
       </div>
     </div>
