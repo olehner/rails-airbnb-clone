@@ -2,7 +2,7 @@
 
 class ParkingSpotsController < ApplicationController
   before_action :set_parking_spot, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_account!, only: [:show, :index, :citysearch]
+  skip_before_action :authenticate_account!, only: [:show, :index, :search]
   def index
     @parking_spots = ParkingSpot.all
 
