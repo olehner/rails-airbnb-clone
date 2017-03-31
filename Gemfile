@@ -8,11 +8,12 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'devise'
+gem 'appsignal'
 
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 
-
+gem 'appsignal'
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
@@ -21,6 +22,8 @@ gem 'country_select'
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
+
+gem 'appsignal'
 
 gem 'sass-rails'
 gem 'jquery-rails'

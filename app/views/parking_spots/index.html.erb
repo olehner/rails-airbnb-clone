@@ -7,6 +7,7 @@
   <div class="row">
 
     <% @parking_spots.each do |parking_spot|%>
+
     <div class="col-xs-12 col-sm-6">
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path parking_spot.photo, height: 300, width: 550, crop: :fill %>');">
         <div class="card-category"><%= parking_spot.title %></div>
@@ -16,35 +17,21 @@
         </div>
         <%= cl_image_tag parking_spot.user.photo, :class => "card-user avatar-square" %>
         <%= link_to "", parking_spot_path(parking_spot), class: "card-link" %>
+
+      <%= link_to parking_spot_path(parking_spot) do %>
+      <h4> <%= parking_spot.title %></h4>
+        <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
+        <% end %>
+        <h4>Size - <%= parking_spot.size %> </h4>
+        <h4><%= parking_spot.address.full_address %></h4>
+        <h4> ‎€ <%= parking_spot.price_per_day %></h4>
       </div>
-
-
-
-
   </div>
   <% end %>
 </div>
 
 
-
-
-<% content_for(:after_js) do %>
-<%= javascript_tag do %>
-$(document).ready(function() {
-var handler = Gmaps.build('Google');
-handler.buildMap({ internal: { id: 'map' } }, function() {
-markers = handler.addMarkers(<%= raw @hash.to_json %>);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-if (markers.length == 0) {
-handler.getMap().setZoom(2);
-} else if (markers.length == 1) {
-handler.getMap().setZoom(14);
-}
-});
-});
-<% end %>
-<% end %>
+ <%= render 'shared/map' %>
 
 
 

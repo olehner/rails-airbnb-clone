@@ -3,8 +3,7 @@
     <h4>Book</h4>
     <% if account_signed_in? %>
 
-    <%= simple_form_for @booking do |f| %>
-
+   <%= simple_form_for @booking do |f| %>
     <%= f.input :start_date, as: :date, start_year: Date.today.year,
     end_year: Date.today.year + 2,
     order: [:day, :month, :year]%> <br>
@@ -17,7 +16,7 @@
 
 
     <%= f.button :submit, "Inquire booking", class: "btn btn-success" %>
-    <% end %>
+   <% end %>
 
     <% else %>
     <%= link_to t(".sign_in", default: "Login"), new_account_session_path, class: "btn btn-success" %>

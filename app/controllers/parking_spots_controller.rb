@@ -15,9 +15,17 @@ class ParkingSpotsController < ApplicationController
     end
   end
 
-  def citysearch
-    @query = params.fetch(:search)
-    @parking_spots = ParkingSpot.joins(:address).where(addresses: {city: @query})
+  def search
+    @city_query = params[:city].blank? ? nil : params[:city]
+    @size_query = params[:size].blank? ? nil : params[:size]
+
+    @parking_spots = ParkingSpot.joins(:address)
+    if @city_query
+      @parking_spots = @parking_spots.where(addresses: {city: @city_query})
+    end
+    if @size_query
+      @parking_spots = @parking_spots.where(size: @size_query)
+    end
 
     @addresses = @parking_spots.return_address_with_coordinates
     @hash = Gmaps4rails.build_markers(@addresses) do |address, marker|

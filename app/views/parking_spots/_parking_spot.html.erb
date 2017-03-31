@@ -7,13 +7,11 @@
   <h4>Price per day - € <%= @parking_spot.price_per_day %></h4>
   <h4><%= @parking_spot.description %></h4>
 
-
-    <div id="map" style="width: 60%; height: 400px;"></div>
+  <%= render 'shared/map' %>
 
   <h4>Parklord details</h4>
   <%= @parking_spot.parklord.first_name %> <%= @parking_spot.parklord.last_name %>
   <%= @parking_spot.parklord.bio %>
-
 
   <% content_for(:after_js) do %>
     <%= javascript_tag do %>
