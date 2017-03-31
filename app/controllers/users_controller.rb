@@ -2,15 +2,15 @@ class UsersController < ApplicationController
 
   before_action :find_user
 
-
-  def edit
-    build_address_for_first_time_edit
-    @bookings = current_user.bookings
-  end
   def show
     @bookings = current_user.bookings
     @parking_spots = current_user.parking_spots
   end
+
+  def edit
+    build_address_for_first_time_edit
+  end
+
   def update
     create_address_for_first_time_edit(address_params)
     if @user.update(user_params)
@@ -32,11 +32,12 @@ class UsersController < ApplicationController
   end
 
   def build_address_for_first_time_edit
-    Address.new unless @user.address
+    @user.address = Address.new unless @user.address
+
   end
 
   def create_address_for_first_time_edit(address_params)
-    Address.create(address_params) unless @user.address
+    @user.address = Address.create(address_params) unless @user.address
   end
 
   def user_params
