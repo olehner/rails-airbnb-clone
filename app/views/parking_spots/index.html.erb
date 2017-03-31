@@ -1,9 +1,23 @@
 <!-- ParkingSpot#index -->
 <!-- <p>Find me in app/views/parking_spot/index.html.erb</p>
- -->
+-->
+<div id="map" style="width: 100%; height: 400px;"></div>
+<div class="container">
 
-<div class="text-center padded">
+  <div class="row">
+
     <% @parking_spots.each do |parking_spot|%>
+
+    <div class="col-xs-12 col-sm-6">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path parking_spot.photo, height: 300, width: 550, crop: :fill %>');">
+        <div class="card-category"><%= parking_spot.title %></div>
+        <div class="card-description">
+          <h2><%= parking_spot.size %></h2>
+          <h2>Price: €<%= parking_spot.price_per_day %>0</h2>
+        </div>
+        <%= cl_image_tag parking_spot.user.photo, :class => "card-user avatar-square" %>
+        <%= link_to "", parking_spot_path(parking_spot), class: "card-link" %>
+
       <%= link_to parking_spot_path(parking_spot) do %>
       <h4> <%= parking_spot.title %></h4>
         <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
@@ -12,8 +26,10 @@
         <h4><%= parking_spot.address.full_address %></h4>
         <h4> ‎€ <%= parking_spot.price_per_day %></h4>
       </div>
-    </div>
-<% end %>
+  </div>
+  <% end %>
+</div>
+
 
  <%= render 'shared/map' %>
 
