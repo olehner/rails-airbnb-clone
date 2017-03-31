@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'devise'
+gem 'appsignal'
 
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
