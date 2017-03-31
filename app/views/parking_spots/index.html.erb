@@ -1,28 +1,27 @@
-
-
-<%= render 'shared/map' %>
-<div class="container">
-
-  <div class="row">
-
 <% content_for :title, "Sir Parks a Lot - Make parking fun again" %>
-
-<div class="text-center padded">
-
-    <% @parking_spots.each do |parking_spot|%>
-
-    <div class="col-xs-12 col-sm-6">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path parking_spot.photo, height: 300, width: 550, crop: :fill %>');">
-        <div class="card-category"><%= parking_spot.title %></div>
-        <div class="card-description">
-          <h2><%= parking_spot.size %></h2>
-          <h2>Price: €<%= parking_spot.price_per_day %>0</h2>
-        </div>
-        <%= cl_image_tag parking_spot.user.photo, :class => "card-user avatar-square" %>
-        <%= link_to "", parking_spot_path(parking_spot), class: "card-link" %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="row">
+      <% @parking_spots.each do |parking_spot|%>
+        <div class="col-sm-6">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path parking_spot.photo, height: 300, width: 550, crop: :fill %>');">
+          <div class="card-category"><%= parking_spot.title %></div>
+          <div class="card-description">
+            <h2><%= parking_spot.size %></h2>
+            <h2>Price: €<%= parking_spot.price_per_day %>0</h2>
+            <p><%= parking_spot.address.street_name %> <%= parking_spot.address.street_number %></p>
+            <p><%= parking_spot.address.zip_code %> <%= parking_spot.address.city %></p>
+          </div>
+          <%= link_to "", parking_spot_path(parking_spot), class: "card-link" %>
+          </div>
       </div>
+
+      </div>
+      </div>
+  <div class="row no-gutters"><div class="col-xs-12 col-sm-4"><%= render 'shared/map' %></div>
   </div>
-  <% end %>
+ </div>
 </div>
 
 
