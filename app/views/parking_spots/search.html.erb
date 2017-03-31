@@ -2,17 +2,21 @@
 
 <p>Your search results are:</p>
 
-<div class="text-center padded">
-    <% @parking_spots.each do |parking_spot|%>
-      <ol>
-        <h1><%= parking_spot.title %></h1>
-        <%= cl_image_tag parking_spot.photo, height: 300, width: 400, crop: :fill %>
-        <h4>Size - <%= parking_spot.size %> </h4>
-        <h4><%= parking_spot.address.full_address %></h4>
-        <h4> ‎€ <%= parking_spot.price_per_day %></h4>
-      </ol>
+<div class="row">
+      <% @parking_spots.each do |parking_spot|%>
+        <div class="col-sm-6">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path parking_spot.photo, height: 300, width: 550, crop: :fill %>');">
+          <div class="card-category"><%= parking_spot.title %></div>
+          <div class="card-description">
+            <h2><%= parking_spot.size %></h2>
+            <h2>Price: €<%= parking_spot.price_per_day %>0</h2>
+            <p><%= parking_spot.address.street_name %> <%= parking_spot.address.street_number %></p>
+            <p><%= parking_spot.address.zip_code %> <%= parking_spot.address.city %></p>
+          </div>
+          <%= link_to "", parking_spot_path(parking_spot), class: "card-link" %>
+          </div>
       </div>
-    </div>
-<% end %>
+      <% end %>
+      </div>
 
 <%= render 'shared/map' %>
