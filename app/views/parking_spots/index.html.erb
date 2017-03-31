@@ -9,13 +9,13 @@
     <% @parking_spots.each do |parking_spot|%>
     <div class="col-xs-12 col-sm-6">
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path parking_spot.photo, height: 300, width: 550, crop: :fill %>');">
-        <div class="card-category">Popular</div>
+        <div class="card-category"><%= parking_spot.title %></div>
         <div class="card-description">
-          <h2>Some stuff</h2>
-          <p>Very cool stuff, useful and smart</p>
+          <h2><%= parking_spot.size %></h2>
+          <h2>Price: €<%= parking_spot.price_per_day %>0</h2>
         </div>
         <%= cl_image_tag parking_spot.user.photo, :class => "card-user avatar-square" %>
-        <a class="card-link" href="#" ></a>
+        <%= link_to "", parking_spot_path(parking_spot), class: "card-link" %>
       </div>
 
 
