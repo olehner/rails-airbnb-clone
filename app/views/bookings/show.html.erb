@@ -12,7 +12,7 @@
     </div>
     <div class="col-xs-12 col-sm-6">
       <div class="text-left" >
-        <h4><%= pluralize(@booking.comments.count, "Comment") %></h4>
+      <br><h4>Your conversation with <%= @booking.parking_spot.user.username %></h4>
         <div id="comments">
         <% @booking.comments.each do |comment| %>
           <%= render '/comments/show', comment: comment %>
@@ -29,7 +29,8 @@
     </div>
     <div class="col-xs-12 col-sm-6">
       <div class="text-left" >
-        <h4><%= pluralize(@booking.comments.count, "Comment") %></h4>
+      <h4>Your conversation with <%= @booking.user.username %></h4>
+
         <div id="comments">
         <% @booking.comments.each do |comment| %>
           <%= render '/comments/show', comment: comment %>
