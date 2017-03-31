@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
 
-
   def new
     @booking = Booking.find(params[:booking_id])
     @comment = Comment.new
@@ -13,9 +12,15 @@ class CommentsController < ApplicationController
     @comment.booking_id = @booking.id
 
     if @comment.save
-      redirect_to booking_path(@booking)
+      respond_to do |format|
+        format.html { redirect_to booking_path(@booking) }
+        format.js  # <-- will render `app/views/comments/create.js.erb`
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'bookings/show' }
+        format.js  # <-- idem
+      end
     end
   end
 
