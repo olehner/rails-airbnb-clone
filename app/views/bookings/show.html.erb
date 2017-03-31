@@ -4,28 +4,28 @@
   <div class="row">
     <% if current_account.user == @booking.user %>
       <div class="col-xs-12 col-sm-6">
-        <div class="text-center padded">
+        <div class="text-center ">
           <%= render 'bookingeditformparker' %>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <div class="text-left padded">
+        <div class="text-left ">
           <%= render '/comments/form' %>
         </div>
       </div>
     <% elsif current_account.user == @booking.parking_spot.user %>
       <div class="col-xs-12 col-sm-6">
-        <div class="text-center padded">
+        <div class="text-center ">
           <%= render 'bookingeditformparklord' %>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <div class="text-left padded">
+        <div class="text-left ">
           <%= render '/comments/form' %>
         </div>
       </div>
     <% else %>
-    <div class="text-center padded">
+    <div class="text-center ">
       <%= link_to root_path do %>
         <%= image_tag "keep_out.jpg" %>
       <% end %>

@@ -1,0 +1,27 @@
+.booking-item {
+  flex: 0 1 auto;
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+/* booking standard link */
+.booking-link {
+  color: #616668;
+  font-size: 14px;
+}
+.booking-link:hover {
+  color: #da552f;
+  text-decoration: none;
+}
+
+/* booking right button */
+.booking-button {
+  margin-left: 10px;
+  padding: 0 20px;
+  border-radius: 20em;
+  line-height: 40px;
+  background-color: #D23333;
+  color: white;
+  font-size: 14px;
+  border: 2px solid #D23333;
+}

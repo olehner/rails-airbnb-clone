@@ -11,6 +11,11 @@ class BookingsController < ApplicationController
   def show
     @parking_spot = @booking.parking_spot
     @comments = Comment.where(booking_id: @booking)
+    @hash = Gmaps4rails.build_markers([@parking_spot.address]) do |address, marker|
+      marker.lat address.latitude
+      marker.lng address.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def create
