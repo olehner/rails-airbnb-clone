@@ -1,8 +1,8 @@
 <% content_for :title, "Sir Parks A Lot" %>
 
-<div class="col-sm-6">
-  <div class="text-center padded">
-    <h4>Book</h4>
+  <!-- <div class="text-center padded"> -->
+<div class="text-center">
+    <h4>Book your parking spot!</h4>
     <% if account_signed_in? %>
 
    <%= simple_form_for @booking do |f| %>
@@ -23,4 +23,3 @@
     <%= link_to t(".sign_in", default: "Login"), new_account_session_path, class: "btn btn-success" %>
     <% end %>
   </div>
-</div>
