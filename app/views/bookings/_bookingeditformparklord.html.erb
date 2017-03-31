@@ -1,10 +1,11 @@
+<br>
 <% if @booking.status == "cancelled" %>
-  <p>Unfortuanetly the booking got cancelled ...</p>
+  <p>Unfortunately the booking got cancelled ...</p>
 <% elsif @booking.status == "confirmed" %>
-  <p>you confirmed it!</p> it!
+  <p>You confirmed it - thank you for using Sir-Parks-A-Lot!</p>
 <% else %>
-  <p>this is your parking spot - do you want to cancel or the booking?</p>
-  <%= link_to "Cancel", cancel_booking_path(@booking) %>
-  <p>do you want to confirm the booking?</p>
-  <%= link_to "Confirm", confirm_booking_path(@booking) %>
+  <p>Do you want to cancel the booking?</p>
+  <%= link_to "Cancel", cancel_booking_path(@booking), class: "btn btn-danger" %>
+  <p>Do you want to confirm the booking?</p>
+  <%= link_to "Confirm", confirm_booking_path(@booking), class: "btn btn-success" %>
 <% end %>
