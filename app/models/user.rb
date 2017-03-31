@@ -13,5 +13,10 @@ class User < ApplicationRecord
   validates :phone_number, presence: true, on: :update
   validates :is_parklord, inclusion: { in: [true, false] }
   accepts_nested_attributes_for :address
+
+  # def bookings_as_owner
+  #   self.parking_spots.map{ |ps| ps.bookings }
+  # end
+
 end
 
