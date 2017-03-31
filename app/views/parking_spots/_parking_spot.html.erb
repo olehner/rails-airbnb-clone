@@ -1,8 +1,5 @@
-<div class="text-center padded">
-
+<div class="col-sm-6">
   <h1> <%= @parking_spot.title  %></h1>
-  <!-- ParkingSpot#show -->
-  <!-- <p>Find me in app/views/parking_spot/show.html.erb</p> -->
 
   <%= cl_image_tag @parking_spot.photo, height: 300, width: 400, crop: :fill %>
   <h4> Size - <%= @parking_spot.size %> </h4>
@@ -36,6 +33,3 @@
     <% end %>
   <% end %>
 </div>
-<!-- would be nice to have description but need as attribute in schema   -->
-<!-- we don't have name - do we need one? -->
-<!-- add rating here -->
