@@ -1,3 +1,4 @@
+<% content_for :title, "Sir Parks a Lot - Make parking fun again" %>
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-8">
@@ -11,18 +12,16 @@
             <h2>Price: €<%= parking_spot.price_per_day %>0</h2>
             <p><%= parking_spot.address.street_name %> <%= parking_spot.address.street_number %></p>
             <p><%= parking_spot.address.zip_code %> <%= parking_spot.address.city %></p>
-
           </div>
-          <%= cl_image_tag parking_spot.user.photo, :class => "card-user avatar-large" %>
           <%= link_to "", parking_spot_path(parking_spot), class: "card-link" %>
           </div>
       </div>
 
-      <% end %>
       </div>
       </div>
   <div class="row no-gutters"><div class="col-xs-12 col-sm-4"><%= render 'shared/map' %></div>
-  </div></div>
+  </div>
+ </div>
 </div>
 
 
