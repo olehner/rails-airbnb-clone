@@ -1,0 +1,13 @@
+<h2>you booked this one - chat with the owner</h2>
+<p>Booking start date</p>
+<p><%= @booking.start_date %></p>
+<p>Booking end date</p>
+<p><%= @booking.end_date %></p>
+<p>the current status is:</p>
+<p><%= @booking.status %></p><br>
+<% if @booking.status == "cancelled" %>
+  <%= link_to "Sorry you cancelled - maybe you want to book something else", root_path %>
+  <% else %>
+  <p>do you want to cancel the booking?</p>
+  <%= link_to "Cancel", cancel_booking_path(@booking) %>
+<% end %>

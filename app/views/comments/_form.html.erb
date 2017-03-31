@@ -1,3 +1,12 @@
+<h2><%= pluralize(@booking.comments.count, "Comment") %></h2>
+<ul class="list">
+  <% @comments.each do |comment| %>
+  <li class= "list-item">
+    <%= comment.user.username %>
+    <%= comment.content %>
+  </li>
+  <% end %>
+</ul>
 <%= simple_form_for [@booking, @booking.comments.build] do |f| %>
   <%= f.input :content %>
   <%= f.submit "Create a comment", class: "btn btn-primary" %>
