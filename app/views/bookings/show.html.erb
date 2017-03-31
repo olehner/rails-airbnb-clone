@@ -1,3 +1,5 @@
+<% content_for :title, "Sir Parks a Lot" %>
+
 <%= render 'parking_spots/parking_spot' %>
 
 <div class="text-center padded">
@@ -36,7 +38,7 @@
     <% if @booking.status == "cancelled" %>
       <p>Unfortuanetly the booking got cancelled ...</p>
     <% elsif @booking.status == "confirmed" %>
- 
+
     <% else %>
       <p>this is your parking spot - do you want to cancel or the booking?</p>
       <%= link_to "Cancel", cancel_booking_path(@booking) %>

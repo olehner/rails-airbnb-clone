@@ -1,7 +1,9 @@
+<% content_for :title, "Sir Parks A Lot" %>
+
 <div class="text-center padded">
   <h4>book or DIE!</h4>
   <% if account_signed_in? %>
-  
+
   <%= simple_form_for @booking do |f| %>
 
   <%= f.input :start_date, as: :date, start_year: Date.today.year,
@@ -14,11 +16,10 @@
   <%= f.input_field :parking_spot_id, as: :hidden,  value: @parking_spot.id %>
 
 
-
   <%= f.button :submit, "Inquire booking" %>
   <% end %>
 
   <% else %>
-  <%= link_to t(".sign_in", default: "Login"), new_account_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>    
+  <%= link_to t(".sign_in", default: "Login"), new_account_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
   <% end %>
 </div>
