@@ -1,0 +1,14 @@
+<h3>You already booked this one - </h3>
+<h4>chat with the owner</h4>
+<p><b>Booking start date:</b></p>
+<p><%= @booking.start_date %></p>
+<p><b>Booking end date</b></p>
+<p><%= @booking.end_date %></p>
+<p><b>The current status is:</b></p>
+<p><%= @booking.status %></p>
+<% if @booking.status == "cancelled" %>
+  <%= link_to "Sorry you cancelled - maybe you want to book something else", root_path, class: "booking-item booking-button btn"%>
+  <% else %>
+  <p>Do you want to cancel the booking?</p>
+  <%= link_to "Cancel", cancel_booking_path(@booking), class: "navbar-wagon-item navbar-wagon-button btn"%>
+<% end %>
