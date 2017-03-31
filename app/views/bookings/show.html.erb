@@ -3,31 +3,43 @@
 <div class="container">
   <div class="row">
     <% if current_account.user == @booking.user %>
-      <div class="col-xs-12 col-sm-6">
-        <div class="text-center ">
-          <%= render 'bookingeditformparker' %>
-        </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="text-center ">
+        <%= render 'bookingeditformparker' %>
       </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="text-left ">
-          <%= render '/comments/form' %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="text-left" >
+        <h4><%= pluralize(@booking.comments.count, "Comment") %></h4>
+        <div id="comments">
+        <% @booking.comments.each do |comment| %>
+          <%= render '/comments/show', comment: comment %>
+        <% end %>
         </div>
+        <%= render '/comments/form', booking: @booking, comment: @comment %>
       </div>
+    </div>
     <% elsif current_account.user == @booking.parking_spot.user %>
-      <div class="col-xs-12 col-sm-6">
-        <div class="text-center ">
-          <%= render 'bookingeditformparklord' %>
-        </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="text-center ">
+        <%= render 'bookingeditformparklord' %>
       </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="text-left ">
-          <%= render '/comments/form' %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="text-left" >
+        <h4><%= pluralize(@booking.comments.count, "Comment") %></h4>
+        <div id="comments">
+        <% @booking.comments.each do |comment| %>
+          <%= render '/comments/show', comment: comment %>
+        <% end %>
         </div>
+        <%= render '/comments/form', booking: @booking, comment: @comment %>
       </div>
+    </div>
     <% else %>
     <div class="text-center ">
       <%= link_to root_path do %>
-        <%= image_tag "keep_out.jpg" %>
+      <%= image_tag "keep_out.jpg" %>
       <% end %>
       <p>you sneaky bastard, go away!</p>
     </div>      

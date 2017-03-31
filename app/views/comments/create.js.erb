@@ -1,0 +1,15 @@
+// app/views/reviews/create.js.erb
+// Here you will write *javascript* that would be executed by the browser
+<% if @comment.errors.any? %>
+  // Render new comment form with errors
+  $('#new_comment').html("<%= j render 'comments/form', restaurant: @restaurant, comment: @comment %>");
+<% else %>
+  // Create a paragraph for the new comment. But hide it.
+  var new_comment = $("<%= j render 'comments/show', comment: @comment %>").hide();
+  // Add it to the DOM, at the end of the existing comments. It's still hidden.
+  $('#comments').append(new_comment);
+  // Show the new comment with an animation!
+  new_comment.slideDown();
+  // Reset the form
+  $('#new_comment').html("<%= j render 'comments/form', restaurant: @restaurant, comment: Comment.new %>");
+<% end %>
