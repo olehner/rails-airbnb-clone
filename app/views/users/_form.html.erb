@@ -2,7 +2,8 @@
   <%= f.input :username %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
-  <%= f.input :date_of_birth %>
+  <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 18 ,
+              order: [:day, :month, :year]%>
   <%= f.input :bio, as: :text %>
   <%= f.input :phone_number %>
   <%= f.input :photo %>
