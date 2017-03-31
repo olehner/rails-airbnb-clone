@@ -1,10 +1,11 @@
 default: &defaults
   # Your push api key, it is possible to set this dynamically using ERB:
   # push_api_key: "<%= ENV['APPSIGNAL_PUSH_API_KEY'] %>"
-  push_api_key: "fe2b93bc-37cf-4ee0-a7e3-f3f71aeeea86"
+
+  push_api_key:  "<%= ENV['APP_SIGNAL_API_KEY'] %>"
 
   # Your app's name
-  name: "RailsAirbnbClone"
+  name: "Sir Parks A Lot"
 
   # Actions that should not be monitored by AppSignal
   # ignore_actions:
