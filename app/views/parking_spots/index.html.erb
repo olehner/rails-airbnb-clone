@@ -1,11 +1,13 @@
-<!-- ParkingSpot#index -->
-<!-- <p>Find me in app/views/parking_spot/index.html.erb</p>
--->
+
 
 <%= render 'shared/map' %>
 <div class="container">
 
   <div class="row">
+
+<% content_for :title, "Sir Parks a Lot - Make parking fun again" %>
+
+<div class="text-center padded">
 
     <% @parking_spots.each do |parking_spot|%>
 
