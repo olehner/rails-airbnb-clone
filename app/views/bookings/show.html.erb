@@ -1,6 +1,6 @@
 <% content_for :title, "Sir Parks a Lot" %>
 
-<%= render '/parking_spots/parking_spot' %>
+
 
 <div class="container">
   <div class="row">
@@ -11,7 +11,6 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <div class="text-left" >
       <br><h4>Your conversation with <%= @booking.parking_spot.user.username %></h4>
         <div id="comments">
         <% @booking.comments.each do |comment| %>
@@ -45,7 +44,8 @@
         <%= image_tag "keep_out.jpg" %>
       <% end %>
       <p>you sneaky bastard, go away!</p>
-    </div>      
+
     <% end %>
+    <%= render '/parking_spots/parking_spot' %>
   </div>
 </div>
