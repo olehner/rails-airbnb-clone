@@ -1,55 +1,32 @@
 <% content_for :title, "#{@user.first_name} #{@user.last_name}" %>
-
 <div class="container">
-  <div class="row">
+
+<div class ="row">
     <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading main-color-bg">
-          <h3 class="panel-title">User Profile</h3>
+          <h3 class="panel-title"> <%= @user.username %> Profile</h3>
         </div>
-        <div class="row">
-          <div class="col-sm-6">
+        <div class="row text-center">
+            <%= link_to edit_user_path(@user) do %>
             <%= cl_image_tag @user.photo, :class => "avatar-big user-profile-avatar" %>
             <h2><%= @user.username %></h2>
             <p><%= @user.first_name %> <%= @user.last_name %></p>
-            <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning btn-sm" %>
-            <%= link_to "Delete", parking_spots_path, class: "btn btn-danger btn-sm pull-right", method: :delete, data: { confirm: "Are you sure? This will delete your account from our website" } %>
-          </div>
-          <div class="col-sm-6 col-sm-offset-6">
             <p><%= @user.date_of_birth %></p>
-            <p><%= @user.bio %></p>
+            <p><%= @user.address.full_address %></p>
             <p><%= @user.phone_number %></p>
-          </div>
-        </div>
-      </div> <!-- end panel -->
-      </div>
-      <div class="col-sm-6">
-      <div class="panel panel-default">
-          <div class="panel-heading main-color-bg">
-            <h3 class="panel-title">Bookings</h3>
-          </div>
-          <h3>Hello world!</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <!-- bookings.all -->
-        </div> <!-- end panel -->
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
-      <div class="panel panel-default">
-        <div class="panel-heading main-color-bg">
-          <h3 class="panel-title">Bookings</h3>
-        </div>
-        <ul class="list-group">
-        <% current_user.bookings.each do |booking| %>
-            <%= link_to booking_path(booking) do %>
-            <li class="list-group-item"><%= booking.status %><%= booking.start_date %><%= booking.end_date %></li>
+            <p><%= @user.bio %></p>
             <% end %>
-            <% end %>
-          </ul>
+            <%#= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning btn-sm" %>
+
+            <%= link_to "Delete", parking_spots_path, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure? This will delete your account from our website" } %>
+            </div>
+
         </div>
-      </div> <!-- end panel -->
-      <div class="col-sm-6">
+        </div>
+     <!-- end panel -->
+
+    <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading main-color-bg">
           <h3 class="panel-title">Park Spots
@@ -57,15 +34,46 @@
           </h3>
         </div>
         <ul class="list-group">
-        <% current_user.parking_spots.each do |park_spot| %>
-            <li class="list-group-item">
+          <% current_user.parking_spots.each do |park_spot| %>
+          <li class="list-group-item">
             <%= link_to parklord_parking_spot_path(park_spot) do %>
             <%= park_spot.size %><%= park_spot.price_per_day %></li>
             <% end %>
             <% end %>
           </ul>
-          <!-- bookings.all -->
-        </div> <!-- end panel -->
+        </div>
+      </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default">
+            <div class="panel-heading main-color-bg">
+              <h3 class="panel-title">Bookings</h3>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">ID</div>
+              <div class="col-sm-2">Status </div>
+              <div class="col-sm-4">Parking Spot </div>
+              <div class="col-sm-2">Start Date</div>
+              <div class="col-sm-2">End Date</div>
+            </div>
+
+            <% current_user.bookings.each do |booking| %>
+            <%= link_to booking_path(booking) do %>
+            <div class="row">
+
+              <div class="col-sm-2"><%= booking.id %></div>
+              <div class="col-sm-2"><%= booking.status %></div>
+              <div class="col-sm-4"><%= booking.parking_spot.title %></div>
+              <div class="col-sm-2"><%= booking.start_date %></div>
+              <div class="col-sm-2"><%= booking.end_date %></div>
+            </div>
+
+            <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
