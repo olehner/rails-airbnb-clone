@@ -45,6 +45,36 @@
       </div>
       </div>
 
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default">
+            <div class="panel-heading main-color-bg">
+              <h3 class="panel-title">Bookings with you</h3>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">ID</div>
+              <div class="col-sm-2">Status </div>
+              <div class="col-sm-4">Parking Spot </div>
+              <div class="col-sm-2">Start Date</div>
+              <div class="col-sm-2">End Date</div>
+            </div>
+
+            <% current_user.parkings_spots.bookings.each do |booking| %>
+            <%= link_to booking_path(booking) do %>
+            <div class="row">
+
+              <div class="col-sm-2"><%= booking.id %></div>
+              <div class="col-sm-2"><%= booking.status %></div>
+              <div class="col-sm-4"><%= booking.parking_spot.title %></div>
+              <div class="col-sm-2"><%= booking.start_date %></div>
+              <div class="col-sm-2"><%= booking.end_date %></div>
+            </div>
+
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
       <div class="row">
         <div class="col-sm-12">
@@ -76,4 +106,5 @@
           </div>
         </div>
       </div>
+
     </div>
